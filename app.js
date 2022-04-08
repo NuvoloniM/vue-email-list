@@ -2,13 +2,15 @@ var app = new Vue(
     {
         el: '#root',
         data:{
-            emailArray:'',
+            emailArray: [],
         },
         created(){
-            axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-                .then((response) =>{
-                    this.emailArray = response.data.response;
-                })
+            for (let i = 0; i < 10; i++) {
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    .then((response) =>{
+                      return  this.emailArray.push(response.data.response);
+                    })
+            }
         },
         method: {
 
